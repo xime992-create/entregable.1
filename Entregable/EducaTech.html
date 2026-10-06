@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EducaTech | Instituto Superior</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables globales y configuración base */
+        :root {
+            --bs-primary: #0d6efd;
+            --bs-primary-rgb: 13, 110, 253;
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+            --text-color: #334155;
+            --bg-light: #f8fafc;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* Utilidades de color de fondo personalizadas */
+        .bg-primary-soft { background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+        .bg-success-soft { background-color: rgba(25, 135, 84, 0.1); color: #198754; }
+        .bg-warning-soft { background-color: rgba(255, 193, 7, 0.1); color: #ffc107; }
+        .bg-info-soft    { background-color: rgba(13, 202, 240, 0.1); color: #0dcaf0; }
+
+        /* Navegación */
+        .navbar-brand {
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar .nav-link {
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-light) 100%);
+        }
+
+        .hero-img {
+            object-fit: cover;
+            height: 100%;
+            max-height: 450px;
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Grid de Beneficios */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .benefit-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Tarjetas de Programas */
+        .program-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-card img {
+            height: 180px;
+            object-fit: cover;
+        }
+
+        /* Formulario Flotante */
+        .form-wrapper {
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        @media (min-width: 992px) {
+            .sticky-element {
+                position: sticky;
+                top: 100px;
+            }
+        }
+
+        .form-control, .form-select {
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #cbd5e1;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.15);
+        }
+
+        footer {
+            background-color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
+                    <i class="bi bi-mortarboard-fill text-primary"></i>
+                    <span>Educa<span class="text-primary">Tech</span></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-medium">
+                        <li class="nav-item"><a class="nav-link px-3" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#beneficios">Beneficios</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#programas">Programas</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#contacto">Contacto</a></li>
+                    </ul>
+                    <a href="#registro" class="btn btn-primary rounded-pill px-4 ms-lg-2 fw-medium">Regístrate</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Principal (Hero) -->
+        <section id="inicio" class="hero-section py-5 py-lg-5">
+            <div class="container my-4">
+                <div class="row align-items-center gy-5">
+                    <div class="col-lg-6 pe-lg-5">
+                        <span class="badge bg-primary-soft px-3 py-2 rounded-pill fw-semibold mb-3">Admisión Abierta</span>
+                        <h1 class="display-5 fw-bold text-dark lh-sm mb-4">
+                            Impulsa tu futuro profesional con <span class="text-primary">educación de excelencia</span>
+                        </h1>
+                        <p class="lead text-secondary mb-5 fs-6 fs-md-5">
+                            Programas técnicos superiores diseñados para responder a la demanda del mercado laboral actual. Estudia con expertos y asegura tu futuro.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a href="#programas" class="btn btn-primary btn-lg rounded-pill px-4 fw-medium">Ver programas</a>
+                            <a href="#registro" class="btn btn-outline-dark btn-lg rounded-pill px-4 fw-medium">Solicitar información</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
+                             alt="Estudiantes en el campus" 
+                             class="hero-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Beneficios -->
+        <section id="beneficios" class="py-5">
+            <div class="container py-5">
+                <div class="text-center max-w-2xl mx-auto mb-5">
+                    <h2 class="fw-bold mb-3">¿Por qué elegirnos?</h2>
+                    <p class="text-secondary">Ofrecemos una metodología práctica y moderna orientada a la rápida inserción laboral.</p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="icon-box bg-primary-soft">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Tecnología de Punta</h5>
+                        <p class="text-secondary small mb-0">Laboratorios modernos y software especializado para cada carrera.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon-box bg-success-soft">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Bolsa de Trabajo</h5>
+                        <p class="text-secondary small mb-0">Convenios con más de 500 empresas líderes a nivel nacional.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon-box bg-warning-soft">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Horarios Flexibles</h5>
+                        <p class="text-secondary small mb-0">Modalidades presenciales y semipresenciales para que estudies a tu ritmo.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="icon-box bg-info-soft">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Plana Docente</h5>
+                        <p class="text-secondary small mb-0">Profesores activos en la industria que comparten experiencia real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Programas y Formulario -->
+        <section id="programas" class="py-5 bg-light">
+            <div class="container py-5">
+                <div class="row gy-5">
+                    
+                    <!-- Lista de Programas -->
+                    <div class="col-lg-7 pe-lg-5">
+                        <h3 class="fw-bold mb-4">Carreras de Alta Demanda</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card h-100 program-card border-0 bg-white">
+                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Desarrollo de Software">
+                                    <div class="card-body p-4">
+                                        <span class="badge bg-primary-soft mb-2">Duración: 3 Años</span>
+                                        <h5 class="card-title fw-bold">Desarrollo de Software</h5>
+                                        <p class="card-text text-secondary small">Crea aplicaciones web y móviles dominando los lenguajes de programación más actuales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="card h-100 program-card border-0 bg-white">
+                            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Redes y Comunicaciones">
+                            <div class="card-body p-4">
+                            <span class="badge bg-primary-soft mb-2">Duración: 3 Años</span>
+                            <h5 class="card-title fw-bold">Redes y Comunicaciones</h5>
+                            <p class="card-text text-secondary small">Diseña e implementa infraestructuras de red seguras para corporaciones e instituciones.</p>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 program-card border-0 bg-white">
+                                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Administración">
+                                    <div class="card-body p-4">
+                                        <span class="badge bg-primary-soft mb-2">Duración: 3 Años</span>
+                                        <h5 class="card-title fw-bold">Administración de Empresas</h5>
+                                        <p class="card-text text-secondary small">Lidera la gestión estratégica y operativa de organizaciones innovadoras.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 program-card border-0 bg-white">
+                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Marketing Digital">
+                                    <div class="card-body p-4">
+                                        <span class="badge bg-primary-soft mb-2">Duración: 3 Años</span>
+                                        <h5 class="card-title fw-bold">Marketing Digital</h5>
+                                        <p class="card-text text-secondary small">Gestiona marcas en entornos digitales, SEO, SEM y estrategias de social media.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario Interactivo -->
+                    <div class="col-lg-5" id="registro">
+                        <div class="form-wrapper p-4 p-md-5 sticky-element">
+                            <h4 class="fw-bold mb-2">Da el primer paso</h4>
+                            <p class="text-secondary small mb-4">Completa tus datos y un asesor se comunicará contigo hoy mismo.</p>
+                            
+                            <!-- Contenedor para alertas JS -->
+                            <div id="formAlerts"></div>
+
+                            <form id="contactForm" novalidate>
+                                <div class="mb-3">
+                                    <label for="inputName" class="form-label small fw-medium text-dark">Nombres y Apellidos</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Ej. Carlos Mendoza" required minlength="3">
+                                    <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="inputEmail" class="form-label small fw-medium text-dark">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="tucorreo@ejemplo.com" required>
+                                    <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="inputPhone" class="form-label small fw-medium text-dark">Celular</label>
+                                    <input type="tel" class="form-control" id="inputPhone" placeholder="987654321" maxlength="9" required>
+                                    <div class="invalid-feedback">Debe contener 9 dígitos numéricos.</div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="selectProgram" class="form-label small fw-medium text-dark">Carrera de Interés</label>
+                                    <select class="form-select" id="selectProgram" required>
+                                        <option value="" selected disabled>Selecciona una carrera...</option>
+                                        <option value="software">Desarrollo de Software</option>
+                                        <option value="redes">Redes y Comunicaciones</option>
+                                        <option value="admin">Administración de Empresas</option>
+                                        <option value="marketing">Marketing Digital</option>
+                                    </select>
+                                    <div class="invalid-feedback">Selecciona un programa de la lista.</div>
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="checkTerms" required>
+                                    <label class="form-check-label small text-secondary" for="checkTerms">
+                                        He leído y acepto la <a href="#" class="text-decoration-none text-primary">Política de Privacidad</a>.
+                                    </label>
+                                    <div class="invalid-feedback">Debes aceptar los términos para enviar.</div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-medium rounded-pill shadow-sm" id="btnSubmit">
+                                    <span class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true" id="loadingSpinner"></span>
+                                    Enviar solicitud
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer id="contacto" class="text-light pt-5 pb-3">
+        <div class="container pt-3">
+            <div class="row gy-4 border-bottom border-secondary pb-4 mb-4">
+                <div class="col-lg-4 pe-lg-5">
+                    <a class="d-flex align-items-center gap-2 fw-bold text-white text-decoration-none fs-4 mb-3" href="#">
+                        <i class="bi bi-mortarboard-fill text-primary"></i>
+                        <span>Educa<span class="text-primary">Tech</span></span>
+                    </a>
+                    <p class="text-secondary small">Formamos profesionales técnicos altamente calificados para enfrentar los retos del sector tecnológico empresarial actual.</p>
+                    <div class="d-flex gap-3 fs-5 mt-4">
+                        <a href="#" class="text-secondary text-decoration-none"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-secondary text-decoration-none"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-secondary text-decoration-none"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold mb-4 text-white">Navegación</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 text-secondary small">
+                        <li><a href="#inicio" class="text-secondary text-decoration-none">Inicio</a></li>
+                        <li><a href="#beneficios" class="text-secondary text-decoration-none">Nuestros Beneficios</a></li>
+                        <li><a href="#programas" class="text-secondary text-decoration-none">Programas Académicos</a></li>
+                        <li><a href="#registro" class="text-secondary text-decoration-none">Admisión</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold mb-4 text-white">Contáctanos</h6>
+                    <ul class="list-un"
